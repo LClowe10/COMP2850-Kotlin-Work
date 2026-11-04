@@ -15,8 +15,9 @@ class StudentAccount(holder: String) : BankAccount(holder) {
 
     override fun withdraw(amount: Int) {
         require(amount > 0) { "Withdrawal amount must be greater than 0" }
-        require(amount <= (balance + overdraft)) { "Insufficient funds for withdrawal" }
         require(withdrawalsAllowed()) { "No funds to withdraw" }
+        require(amount <= (balance + overdraft)) { "Insufficient funds for withdrawal" }
+
         balance -= amount
     }
 
